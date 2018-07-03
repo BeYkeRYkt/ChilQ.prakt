@@ -66,6 +66,9 @@ public class list_emp extends Fragment {
         mLayoutManager = new LinearLayoutManager(rootView.getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
         //mAdapter = new parent_task_list_adapter(myDataset);
+        if(!task_modelList.isEmpty()){
+            task_modelList.clear();
+        }
         mAdapter = new child_task_list_adapter(task_modelList);
         mRecyclerView.setAdapter(mAdapter);
         
@@ -122,23 +125,6 @@ public class list_emp extends Fragment {
         }
         myRef.addChildEventListener(mChildEventListener);
 
-        // Hide FAB while scrolling
-        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                if (dy > 0 || dy < 0 && fab.isShown())
-                    fab.hide();
-            }
-
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-
-                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    fab.show();
-                }
-                super.onScrollStateChanged(recyclerView, newState);
-            }
-        });
         return rootView;
     }
 

@@ -15,7 +15,6 @@ import com.example.zz.chilq.model.task_model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class parent_task_list_adapter extends RecyclerView.Adapter<parent_task_recycler_view_holder> {
 
@@ -120,6 +119,16 @@ public class parent_task_list_adapter extends RecyclerView.Adapter<parent_task_r
             holder.itemView.startAnimation(animation);
             this.lastPosition = position;
         }
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
     }
 
     @Override

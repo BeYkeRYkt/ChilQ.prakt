@@ -66,6 +66,9 @@ public class my_emp extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(rootView.getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
+        if(!task_modelList.isEmpty()) {
+            task_modelList.clear();
+        }
         mAdapter = new parent_task_list_adapter(task_modelList);
         mRecyclerView.setAdapter(mAdapter);
 
@@ -101,7 +104,7 @@ public class my_emp extends Fragment {
                     Fragment myFragment = null;
                     myFragment = (Fragment) fragmentClass.newInstance();
                     FragmentManager fragmentManager = activity.getSupportFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.content_frame, myFragment).commit();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, myFragment).addToBackStack(null).commit();
                 } catch (java.lang.InstantiationException e) {
                     e.printStackTrace();
                 } catch (IllegalAccessException e) {
